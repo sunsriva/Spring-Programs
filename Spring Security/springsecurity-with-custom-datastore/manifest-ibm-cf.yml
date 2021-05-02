@@ -1,0 +1,15 @@
+---
+applications:
+  - name: springsecurity-with-custom-datastore
+    path: target/springsecurity-with-custom-datastore.jar
+    memory: 1024M
+    instances: 1
+    routes:
+      - route: springsecurity-with-custom-datastore.mybluemix.net
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack/releases/download/v4.16.1/java-buildpack-v4.16.1.zip
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.0.+ } }'
+      SPRING_PROFILES_ACTIVE: ibm-cf
+    services:
+      - process-state-mongodb
